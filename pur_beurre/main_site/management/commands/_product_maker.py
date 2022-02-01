@@ -63,7 +63,7 @@ class ApiProduct:
             return None
 
     def image_url(self):
-        """"Search the image of the product"""
+        """ "Search the image of the product"""
         try:
             if self.json_product["image_url"] != "":
                 return self.json_product["image_url"]
@@ -74,7 +74,7 @@ class ApiProduct:
             return None
 
     def kcal(self):
-        """"Search the kcal for 100g of the product"""
+        """ "Search the kcal for 100g of the product"""
         try:
             product_kcal = self.json_product["nutriments"]["energy-kcal_100g"]
         except KeyError:
@@ -84,7 +84,7 @@ class ApiProduct:
             return product_kcal
 
     def fat(self):
-        """"Search the fat for 100g of the product"""
+        """ "Search the fat for 100g of the product"""
         try:
             product_fat = self.json_product["nutriments"]["fat_100g"]
         except KeyError:
@@ -96,7 +96,7 @@ class ApiProduct:
             return None
 
     def protein(self):
-        """"Search the protein for 100g of the product"""
+        """ "Search the protein for 100g of the product"""
         try:
             product_protein = self.json_product["nutriments"]["proteins_100g"]
         except KeyError:
@@ -108,7 +108,7 @@ class ApiProduct:
             return None
 
     def sugar(self):
-        """"Search the sugar for 100g of the product"""
+        """ "Search the sugar for 100g of the product"""
         try:
             product_sugar = self.json_product["nutriments"]["sugars_100g"]
         except KeyError:
