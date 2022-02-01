@@ -1,3 +1,4 @@
+# pylint: skip-file
 from django.test import TestCase, Client
 
 from user_management.models import UserExtension

@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
+from django.contrib.auth import login, get_user_model
 
 from .forms import SignUpForm
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 
 def signup(request):
+    """Show the signup page to let the user create an account."""
+
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():

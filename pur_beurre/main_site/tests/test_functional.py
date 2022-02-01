@@ -1,3 +1,4 @@
+# pylint: skip-file
 import logging
 from django.test import LiveServerTestCase
 from webdriver_manager.chrome import ChromeDriverManager

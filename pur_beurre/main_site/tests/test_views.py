@@ -1,3 +1,4 @@
+# pylint: skip-file
 from django.test import TestCase, Client
 from django.contrib.auth.models import AnonymousUser
 

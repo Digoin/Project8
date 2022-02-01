@@ -1,3 +1,4 @@
+# pylint: skip-file
 from django.test import TestCase
 from .._product_maker import ApiProduct
 

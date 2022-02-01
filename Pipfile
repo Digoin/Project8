@@ -8,6 +8,7 @@ django = "*"
 psycopg2 = "*"
 requests = "*"
 dj-database-url = "*"
+pylint-django = "*"
 
 [dev-packages]
 coverage = "*"

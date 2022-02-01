@@ -1,19 +1,23 @@
 import string
+
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from main_site.models import Product
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.urls import reverse
+
+from main_site.models import Product
 
 # Create your views here.
 
 
 def home(request):
+    """Show the home page."""
 
     return render(request, "main_site/welcome_page.html")
 
 
 def account_detail(request):
+    """Show the details of the connected user."""
 
     # Checking if user is authentificated
     if not request.user.is_authenticated:
@@ -25,11 +29,14 @@ def account_detail(request):
 
 
 def legal_notice(request):
+    """Show a page with the legal notice."""
 
     return render(request, "main_site/legal_notice.html")
 
 
 def product_description(request, product_id):
+    """Show a page with the description of the product."""
+
     favorite_products = []
     substitute_products = []
     best_subsitute_products = []
@@ -73,6 +80,8 @@ def product_description(request, product_id):
 
 
 def product_research(request):
+    """Research a product from the user research in the database"""
+
     no_repetition_result = []
     vectors = SearchVector("name", weight="A") + SearchVector(
         "category__name", weight="B"
@@ -97,6 +106,8 @@ def product_research(request):
 
 
 def favorites(request):
+    """Show the page of user's favorites products."""
+
     favorite_message = "Produits favoris"
 
     # Checking if user is authentificated
@@ -117,6 +128,7 @@ def favorites(request):
 
 
 def add_favorite(request):
+    """Add the selected product to the favorite of the user."""
 
     # Checking if user is authenticated
     if not request.user.is_authenticated:

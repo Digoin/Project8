@@ -14,6 +14,7 @@ class Command(BaseCommand):
         parser.add_argument("number_of_pages", nargs="+", type=int)
 
     def products_list_creator(self, category, number_of_pages):
+        """Call the class ApiProduct and build the product from the open food facts app"""
         products_list = []
         api_request = dict(
             requests.get(
@@ -27,6 +28,7 @@ class Command(BaseCommand):
         return products_list
 
     def product_data_validity(self, product):
+        """Check that the attributes of the product are all valid"""
         return (
             product.name() is None
             or product.categories() is None
@@ -42,6 +44,7 @@ class Command(BaseCommand):
         )
 
     def fill_categories(self, products):
+        """Add the categories of the products list to the database."""
         for product in products:
             for category in product.categories():
                 new_category = Category(name=category)
@@ -51,6 +54,7 @@ class Command(BaseCommand):
                     self.stdout.write("Category already exist.")
 
     def fill_products(self, products):
+        """Add the products of the list to the database."""
         for product in products:
             new_product = Product(
                 name=product.name(),
@@ -69,6 +73,7 @@ class Command(BaseCommand):
                 self.stdout.write("Product already exist or his name is already used.")
 
     def link_product_categories(self, product):
+        """This function link the products to their categories."""
         for category in product.categories():
             category_instance = Category.objects.filter(name=category)[0]
             product_instance = Product.objects.filter(name=product.name())[0]

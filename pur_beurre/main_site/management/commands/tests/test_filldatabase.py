@@ -1,3 +1,4 @@
+# pylint: skip-file
 from django.test import TransactionTestCase
 from unittest.mock import patch, MagicMock, Mock
 from json import dumps
